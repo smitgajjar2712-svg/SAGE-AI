@@ -1,0 +1,46 @@
+{
+  "name": "custor-stt",
+  "version": "1.0.0",
+  "description": "CUSTOR STT liquid glass desktop speech-to-text assistant",
+  "main": "dist-electron/main.js",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
+    "build": "tsc && vite build && tsc -p electron/tsconfig.json",
+    "preview": "vite preview",
+    "dist": "npm run build && electron-builder --win nsis --x64"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "framer-motion": "latest",
+    "zustand": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "concurrently": "latest",
+    "wait-on": "latest",
+    "tailwindcss": "latest",
+    "electron-builder": "latest",
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "typescript": "latest",
+    "electron": "latest"
+  },
+  "build": {
+    "appId": "ai.custor.stt",
+    "productName": "CUSTOR STT",
+    "files": [
+      "dist/**",
+      "dist-electron/**"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
